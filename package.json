@@ -1,20 +1,41 @@
 {
-  "name": "my-storybook",
-  "private": true,
-  "version": "0.0.0",
+  "name": "rarodev-storybook",
+  "private": false,
+  "version": "0.0.1",
   "type": "module",
+  "keywords": [
+    "dev",
+    "react",
+    "not-use"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Abra24-Ro/storybook-components",
+  "repository": {
+    "url": "https://github.com/Abra24-Ro/storybook-components",
+    "type": "git"
+  },
+  "files": [
+    "dist/"
+  ],
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
+  "peerDependencies": {
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "clean": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
+    "build": "pnpm run clean && tsc -p tsconfig.build.json && pnpm run copyfiles",
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "chromatic": "npx chromatic --project-token=chpt_5f789d1cf109588"
-  },
-  "dependencies": {
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "chromatic": "npx chromatic --project-token=chpt_5f789d1cf109588",
+    "copyfiles": "copyfiles -u 1 \"src/**/*.css\" dist"
   },
   "devDependencies": {
     "@babel/core": "^7.29.7",
@@ -35,12 +56,15 @@
     "@vitest/coverage-v8": "^4.1.9",
     "babel-plugin-react-compiler": "^1.0.0",
     "chromatic": "^17.7.2",
+    "copyfiles": "^2.4.1",
     "eslint": "^10.5.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.3",
     "eslint-plugin-storybook": "^10.4.6",
     "globals": "^17.6.0",
     "playwright": "^1.61.1",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
     "storybook": "^10.4.6",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.61.0",
